@@ -3,6 +3,7 @@ package com.freelance.android.roompersistence.db.entities;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverters;
 import android.support.annotation.NonNull;
@@ -22,8 +23,10 @@ import java.util.Date;
 
         @ForeignKey(entity = User.class,
                 parentColumns = "id",
-                childColumns = "user_id")
-})
+                childColumns = "user_id",
+                onDelete = ForeignKey.CASCADE)
+}, indices = {@Index("book_id"),
+        @Index("user_id")})
 @TypeConverters(DateConverter.class)
 public class Loan {
 
@@ -36,9 +39,9 @@ public class Loan {
     public Date endTime;
 
     @ColumnInfo(name = "book_id")
-    public String bookId;
+    public String book_Id;
 
     @ColumnInfo(name = "user_id")
-    public String userId;
+    public String user_Id;
 
 }

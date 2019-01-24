@@ -49,8 +49,8 @@ public class DatabaseInitializer {
 
         Loan l = new Loan();
         l.id = Id;
-        l.userId = user.id;
-        l.bookId = book.id;
+        l.user_Id = user.id;
+        l.book_Id = book.id;
         l.startTime = From;
         l.endTime = To;
         db.loanDao().insertLoan(l);
@@ -69,15 +69,15 @@ public class DatabaseInitializer {
         db.userDao().deleteAll();
         db.loanDao().deleteAll();
 
+        User u1 = addUser(db, "1", "Jason", "Seaver", 40);
+        User u2 = addUser(db, "2", "Mike", "Seaver", 12);
+        addUser(db, "3", "Carol", "Seaver", 15);
+
         Book b1 = addBook(db, "1", "Dune");
         Book b2 = addBook(db, "2", "1984");
         Book b3 = addBook(db, "3", "The War of the Worlds.");
         Book b4 = addBook(db, "4", "Brave New World.");
         addBook(db, "5", "Foundation");
-
-        User u1 = addUser(db, "1", "Jason", "Seaver", 40);
-        User u2 = addUser(db, "2", "Mike", "Seaver", 12);
-        addUser(db, "3", "Carol", "Seaver", 15);
 
         try {
             Date today = getTodayPlusDays(0);
@@ -113,17 +113,17 @@ public class DatabaseInitializer {
     public static void populateAsync(final AppDatabase db) {
         Log.i(LOG_TAG, "TEST: populateAsync() is called...");
 
-        PopulateAsync task = new PopulateAsync(db);
+        PopulateDbAsync task = new PopulateDbAsync(db);
         task.execute();
     }
 
-    private static class PopulateAsync extends AsyncTask<Void, Void, Void> {
-        private static final String LOG_TAG = PopulateAsync.class.toString();
+    private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
+        private static final String LOG_TAG = PopulateDbAsync.class.toString();
 
         private final AppDatabase mDb;
 
-        PopulateAsync(AppDatabase db) {
-            Log.i(LOG_TAG, "TEST: PopulateAsync Constructor() is called...");
+        PopulateDbAsync(AppDatabase db) {
+            Log.i(LOG_TAG, "TEST: PopulateDbAsync Constructor() is called...");
 
             mDb = db;
         }
