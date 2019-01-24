@@ -27,7 +27,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract LoanDao loanDao();
 
-     public static AppDatabase getInMemoryDatabase(Context c) {
+    /*public static AppDatabase getInMemoryDatabase(Context c) {
         Log.i(LOG_TAG, "TEST: AppDatabase getInMemoryDatabase() is called...");
 
         if (instance == null) {
@@ -35,11 +35,9 @@ public abstract class AppDatabase extends RoomDatabase {
                     .allowMainThreadQueries().build();
         }
         return instance;
-    }
+    }*/
 
-    //TODO List
-    /*When the second times opened the app then will show this error "FOREIGN KEY constraint failed (code 787 SQLITE_CONSTRAINT_FOREIGNKEY"*/
-    /*public static AppDatabase getDatabase(final Context c) {
+    public static AppDatabase getDatabase(final Context c) {
         Log.i(LOG_TAG, "TEST: AppDatabase getInMemoryDatabase() is called...");
 
         if (instance == null) {
@@ -47,13 +45,13 @@ public abstract class AppDatabase extends RoomDatabase {
                 if (instance == null) {
                     instance = Room.databaseBuilder(c.getApplicationContext(),
                             AppDatabase.class, "library_database")
-                            .allowMainThreadQueries() *//*solved this error "Cannot access database on the main thread since it may potentially lock the UI for a long period of time."*//*
+                            .allowMainThreadQueries() /*solved this error "Cannot access database on the main thread since it may potentially lock the UI for a long period of time."*/
                             .build();
                 }
             }
         }
         return instance;
-    }*/
+    }
 
     public static void destroyInstance() {
         Log.i(LOG_TAG, "TEST: destroyInstance() is called...");

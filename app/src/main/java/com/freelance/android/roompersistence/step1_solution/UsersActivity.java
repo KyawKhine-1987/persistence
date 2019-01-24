@@ -35,8 +35,8 @@ public class UsersActivity extends AppCompatActivity {
         setContentView(R.layout.db_activity1);
 
         mYoungUsersTextView = findViewById(R.id.young_users_tv);
-        mDb = AppDatabase.getInMemoryDatabase(this);
-        /*mDb = AppDatabase.getDatabase(this);*/
+        /*mDb = AppDatabase.getInMemoryDatabase(this);*/
+        mDb = AppDatabase.getDatabase(this);
 
         populateDb();
         fetchData();

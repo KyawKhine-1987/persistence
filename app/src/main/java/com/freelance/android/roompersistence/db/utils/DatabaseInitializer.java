@@ -65,9 +65,10 @@ public class DatabaseInitializer {
     private static void populateWithTestData(AppDatabase db) {
         Log.i(LOG_TAG, "TEST: populateWithTestData() is called...");
 
-        db.bookDao().deleteAll();
-        db.userDao().deleteAll();
         db.loanDao().deleteAll();
+        db.userDao().deleteAll();
+        db.bookDao().deleteAll();
+        /* you must be written like that loan, user and book bcoz it depends on primary data which is solved this error "FOREIGN KEY constraint failed (code 787 SQLITE_CONSTRAINT_FOREIGNKEY)"*/
 
         User u1 = addUser(db, "1", "Jason", "Seaver", 40);
         User u2 = addUser(db, "2", "Mike", "Seaver", 12);
@@ -129,7 +130,7 @@ public class DatabaseInitializer {
         }
 
         @Override
-        protected Void doInBackground(Void... params) {
+        protected Void doInBackground(final Void... params) {
             Log.i(LOG_TAG, "TEST: doInBackground() is called...");
 
             populateWithTestData(mDb);

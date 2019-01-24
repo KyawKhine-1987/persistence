@@ -11,14 +11,35 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-       <!-- <activity android:name=".step1.UsersActivity">
+        <!--<activity android:name=".step1.UsersActivity">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN"/>
+
+                 <category android:name="android.intent.category.LAUNCHER"/>
+             </intent-filter>
+         </activity>
+          <activity android:name=".step1_solution.UsersActivity">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN"/>
+
+                 <category android:name="android.intent.category.LAUNCHER"/>
+             </intent-filter>
+         </activity>
+         <activity android:name=".step2.JankShowUserActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".step3.BooksBorrowedByUserActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>-->
-        <activity android:name=".step1_solution.UsersActivity">
+        <activity android:name=".step3_solution.BooksBorrowedByUserActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
