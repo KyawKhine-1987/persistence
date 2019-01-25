@@ -85,18 +85,18 @@ public class DatabaseInitializer {
             Date yesterday = getTodayPlusDays(-1);
             Date twoDaysAgo = getTodayPlusDays(-2);
             Date lastWeek = getTodayPlusDays(-7);
-            Date twoWeekAgo = getTodayPlusDays(-14);
+            Date twoWeeksAgo = getTodayPlusDays(-14);
 
-            addLoan(db, "1", u1, b1, twoWeekAgo, lastWeek);
+            addLoan(db, "1", u1, b1, twoWeeksAgo, lastWeek);//-14, -7
             Thread.sleep(Delay_Millis);
-            addLoan(db, "2", u2, b1, lastWeek, yesterday);
+            addLoan(db, "2", u2, b1, lastWeek, yesterday);//-7, -1
             Thread.sleep(Delay_Millis);
-            addLoan(db, "3", u2, b2, lastWeek, today);
+            addLoan(db, "3", u2, b2, lastWeek, today);//-7, 0
             Thread.sleep(Delay_Millis);
-            addLoan(db, "4", u2, b3, lastWeek, twoDaysAgo);
+            addLoan(db, "4", u2, b3, lastWeek, twoDaysAgo);//-7, -2
             Thread.sleep(Delay_Millis);
-            addLoan(db, "5", u2, b4, lastWeek, today);
-            Thread.sleep(Delay_Millis);
+            addLoan(db, "5", u2, b4, lastWeek, today);//-7, 0
+            Log.d("DB", "Added loans");
 
         } catch (InterruptedException e) {
             e.printStackTrace();

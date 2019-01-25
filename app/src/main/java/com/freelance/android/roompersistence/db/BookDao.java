@@ -7,6 +7,7 @@ import android.arch.persistence.room.Query;
 
 import com.freelance.android.roompersistence.db.entities.Book;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,10 +30,18 @@ public interface BookDao {
             "where u.name like :userName;")
     List<Book> findBooksBorrowedByNameSync(String userName);
 
-    //step3
+    //That step3_solution & step4 are called this query.
     @Query("select * from Book as b " +
             "Inner Join Loan as l on l.book_id = b.id " +
             "Inner Join User as u on u.id = l.user_id " +
             "where u.name like :userName;")
     LiveData<List<Book>> findBooksBorrowedByName(String userName);
+
+    //step4_solution
+    @Query("select * from Book as b " +
+            "Inner Join Loan as l on l.book_id = b.id " +
+            "Inner Join User as u on u.id = l.user_id " +
+            "where u.name like :userName " +
+            "and l.endTime > :after; ")
+    LiveData<List<Book>> findBooksBorrowedByNameAfter(String userName, Date after);
 }

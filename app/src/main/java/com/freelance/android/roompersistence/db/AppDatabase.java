@@ -3,6 +3,7 @@ package com.freelance.android.roompersistence.db;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 import android.util.Log;
 
@@ -16,6 +17,7 @@ import com.freelance.android.roompersistence.db.entities.User;
  */
 
 @Database(entities = {Book.class, User.class, Loan.class}, version = 1, exportSchema = false)
+@TypeConverters(DateConverter.class)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String LOG_TAG = AppDatabase.class.toString();
 
@@ -38,7 +40,7 @@ public abstract class AppDatabase extends RoomDatabase {
     }*/
 
     public static AppDatabase getDatabase(final Context c) {
-        Log.i(LOG_TAG, "TEST: AppDatabase getInMemoryDatabase() is called...");
+        Log.i(LOG_TAG, "TEST: AppDatabase getDatabase() is called...");
 
         if (instance == null) {
             synchronized (AppDatabase.class) {
